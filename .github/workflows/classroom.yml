@@ -1,0 +1,65 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: test1
+      id: test1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test1
+        setup-command: javac OneArrayList.java -encoding UTF8
+        command: java -cp . OneArrayList
+        input: '5 9 2 4 8 2.3 9.5 1.7 107.8 56.222
+
+          '
+        expected-output: 'Enter five integers and five doubles: 1.7 2 2.3 4 5 8 9
+          9.5 56.222 107.8 '
+        comparison-method: contains
+        timeout: 10
+    - name: test2
+      id: test2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test2
+        setup-command: javac OneArray.java -encoding UTF8
+        command: java -cp . OneArray
+        input: '3 89 55 173 24 23.5 3.1 2.9 150.2 173.2
+
+          '
+        expected-output: 'Enter five integers and five doubles: 2.9 3 3.1 23.5 24
+          55 89 150.2 173 173.2 '
+        comparison-method: contains
+        timeout: 10
+    - name: test3
+      id: test3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: test3
+        setup-command: javac OneArray.java -encoding UTF8
+        command: java -cp . OneArray
+        input: '100 100 100 2 2 1.9 100.1 99.9 1.9 100.2
+
+          '
+        expected-output: 'Enter five integers and five doubles: 1.9 1.9 2 2 99.9 100
+          100 100 100.1 100.2 '
+        comparison-method: contains
+        timeout: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TEST1_RESULTS: "${{steps.test1.outputs.result}}"
+        TEST2_RESULTS: "${{steps.test2.outputs.result}}"
+        TEST3_RESULTS: "${{steps.test3.outputs.result}}"
+      with:
+        runners: test1,test2,test3
