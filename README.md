@@ -1,4 +1,4 @@
-# 2024_OOP_Week12_1 : 
+# 2024_OOP_Week12_1 : OneArrayList
 
 - 각 코드에 주석으로 간단한 설명이 달려있습니다. 참고하셔서 `OneArrayList.java` 를 수정해주세요.
 - sample run을 참조하시면 됩니다.
