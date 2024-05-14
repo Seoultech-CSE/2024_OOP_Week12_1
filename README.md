@@ -1,8 +1,8 @@
-# OOP_2023_Week12_Problem1
+# 2024_OOP_Week12_1 : 
 
-- 각 코드에 주석으로 간단한 설명이 달려있습니다. 참고하셔서 `Problem1.java` 를 수정해주세요.
+- 각 코드에 주석으로 간단한 설명이 달려있습니다. 참고하셔서 `OneArrayList.java` 를 수정해주세요.
 - sample run을 참조하시면 됩니다.
-- 출력문이 sample run와 동일해야 자동채점이 정상 채점 됩니다.
+- 출력문이 sample run과 (입력 제외하고) 동일해야 자동채점이 정상 채점 됩니다.
 
 ---
 ## Problem1
